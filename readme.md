@@ -23,3 +23,38 @@ Create a backend system that allows users to manage events. The API should handl
 | - Event Filtering        | Filter events by categories such as Music, Sports, or Workshops.                       |
 | **API Documentation**    |                                                                                        |
 | - Swagger/Postman Docs   | All API endpoints are documented for easy integration and testing.                     |
+
+## Tech Stack:
+
+- Backend Framework: `Node.js` with `Express.js`.
+- Database: `MongoDB` (NoSQL)
+- Authentication: `JSON Web Tokens` (JWT).
+- Validation: Joi
+- Development Tools:
+  - `Nodemon` for live reloads.
+  - `Cors` for API integration
+  - `Bcypt` for Encyption
+
+---
+
+## Endpoints Examples:
+
+1. User Endpoints:
+
+- POST /api/register – Register a new user.
+- POST /api/login – Log in and receive a JWT token.
+
+2. Event Endpoints:
+
+- POST /api/events – Create a new event (Admin only).
+- GET /api/events – Fetch all events.
+- GET /api/events/:id – Fetch a specific event by ID.
+
+3. Booking Endpoints:
+
+- POST /api/bookings – Book tickets for an event.
+- GET /api/bookings/user/:id – Fetch user bookings.
+
+4. Statistics Endpoints:
+
+- GET /api/events/:id/stats – Get statistics for a specific event.
