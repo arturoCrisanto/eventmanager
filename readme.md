@@ -33,7 +33,7 @@ Create a backend system that allows users to manage events. The API should handl
 - Development Tools:
   - `Nodemon` for live reloads.
   - `Cors` for API integration
-  - `Bcypt` for Encyption
+  - `Bcrypt` for Encyption
 
 ---
 
@@ -41,20 +41,20 @@ Create a backend system that allows users to manage events. The API should handl
 
 1. User Endpoints:
 
-- POST /api/register – Register a new user.
-- POST /api/login – Log in and receive a JWT token.
+   - POST `/api/register` – Register a new user.
+   - POST `/api/login` – Log in and receive a JWT token.
 
 2. Event Endpoints:
 
-- POST /api/events – Create a new event (Admin only).
-- GET /api/events – Fetch all events.
-- GET /api/events/:id – Fetch a specific event by ID.
+   - POST `/api/events` – Create a new event (Admin only).
+   - GET `/api/events` – Fetch all events.
+   - GET `/api/events/:id` – Fetch a specific event by ID.
 
 3. Booking Endpoints:
 
-- POST /api/bookings – Book tickets for an event.
-- GET /api/bookings/user/:id – Fetch user bookings.
+   - POST `/api/bookings` – Book tickets for an event.
+   - GET `/api/bookings/user/:id` – Fetch user bookings.
 
 4. Statistics Endpoints:
 
-- GET /api/events/:id/stats – Get statistics for a specific event.
+   - GET `/api/events/:id/stats` – Get statistics for a specific event.
