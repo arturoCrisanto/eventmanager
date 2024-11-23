@@ -1,7 +1,7 @@
 const express = require("express");
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
-// const userRoutes = require("./routes/userRoutes");
+const userRoutes = require("./routes/userRoutes");
 // const eventRoutes = require("./routes/eventRoutes");
 // const bookingRoutes = require("./routes/bookingRoutes");
 // const errorHandler = require("./middlewares/errorHandler");
@@ -14,7 +14,7 @@ const app = express();
 app.use(express.json());
 
 // Routes
-// app.use("/api/users", userRoutes);
+app.use("/api/users", userRoutes);
 // app.use("/api/events", eventRoutes);
 // app.use("/api/bookings", bookingRoutes);
 
