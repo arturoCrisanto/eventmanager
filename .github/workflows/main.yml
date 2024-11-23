@@ -1,0 +1,51 @@
+name: Auto Merge PRs
+
+on:
+  pull_request:
+    types:
+      - opened
+      - synchronize  # Triggers on updates to the PR
+      - reopened
+
+jobs:
+  test-and-merge:
+    runs-on: ubuntu-latest
+
+    steps:
+    # Step 1: Check out the code
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    # Step 2: Run your tests (adjust this based on your setup)
+    - name: Run Tests
+      run: |
+        npm install
+        npm test
+
+    # Step 3: Automate Merge
+    - name: Merge PR
+      if: success()  # Only proceed if all previous steps were successful
+      uses: actions/github-script@v6
+      with:
+        script: |
+          const prNumber = context.payload.pull_request.number;
+          const { data: reviews } = await github.pulls.listReviews({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            pull_number: prNumber,
+          });
+
+          // Check if there are required reviews
+          const approved = reviews.some(review => review.state === 'APPROVED');
+
+          if (approved) {
+            await github.pulls.merge({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: prNumber,
+              merge_method: 'squash', # or 'merge', 'rebase'
+            });
+          } else {
+            console.log('PR not approved. Skipping merge.');
+          }
+        github-token: ${{ secrets.GITHUB_TOKEN }}
